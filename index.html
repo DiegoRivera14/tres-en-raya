@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tres en raya</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="juego">
+    <h1>Tres en raya</h1>
+
+    <div class="modo" role="group" aria-label="Modo de juego">
+      <button class="opcion-modo activo" data-modo="2j">2 jugadores</button>
+      <button class="opcion-modo" data-modo="ia">Contra la máquina</button>
+    </div>
+
+    <p id="estado" class="estado" aria-live="polite"></p>
+
+    <div id="tablero" class="tablero" role="grid" aria-label="Tablero">
+      <button class="casilla" data-indice="0" aria-label="Casilla 1"></button>
+      <button class="casilla" data-indice="1" aria-label="Casilla 2"></button>
+      <button class="casilla" data-indice="2" aria-label="Casilla 3"></button>
+      <button class="casilla" data-indice="3" aria-label="Casilla 4"></button>
+      <button class="casilla" data-indice="4" aria-label="Casilla 5"></button>
+      <button class="casilla" data-indice="5" aria-label="Casilla 6"></button>
+      <button class="casilla" data-indice="6" aria-label="Casilla 7"></button>
+      <button class="casilla" data-indice="7" aria-label="Casilla 8"></button>
+      <button class="casilla" data-indice="8" aria-label="Casilla 9"></button>
+    </div>
+
+    <div class="marcador">
+      <div><span class="ficha-x">X</span><b id="puntos-x">0</b></div>
+      <div><span>Empates</span><b id="puntos-empate">0</b></div>
+      <div><span class="ficha-o">O</span><b id="puntos-o">0</b></div>
+    </div>
+
+    <div class="acciones">
+      <button id="reiniciar">Nueva partida</button>
+      <button id="resetear-marcador" class="secundario">Reiniciar marcador</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

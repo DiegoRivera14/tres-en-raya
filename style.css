@@ -1,0 +1,158 @@
+:root {
+  --fondo: #14213d;
+  --tarjeta: #1d2d50;
+  --casilla: #273b66;
+  --casilla-hover: #304876;
+  --texto: #f1f4fa;
+  --texto-suave: #9fb0d0;
+  --x: #ff6b6b;
+  --o: #4dd4ac;
+  --ganadora: #ffd166;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--fondo);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--texto);
+  padding: 16px;
+}
+
+.juego {
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ---------- Modo ---------- */
+.modo {
+  display: inline-flex;
+  background: var(--tarjeta);
+  border-radius: 24px;
+  padding: 4px;
+}
+
+.opcion-modo {
+  border: none;
+  background: none;
+  color: var(--texto-suave);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.9rem;
+}
+
+.opcion-modo.activo {
+  background: var(--casilla-hover);
+  color: var(--texto);
+}
+
+.estado {
+  margin: 18px 0 14px;
+  font-size: 1.1rem;
+  min-height: 1.5em;
+}
+
+/* ---------- Tablero ---------- */
+.tablero {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.casilla {
+  aspect-ratio: 1;
+  border: none;
+  border-radius: 14px;
+  background: var(--casilla);
+  font-size: clamp(2.5rem, 12vw, 3.5rem);
+  font-weight: 800;
+  color: var(--texto);
+  transition: background 0.15s;
+}
+
+.casilla:not(:disabled):hover { background: var(--casilla-hover); }
+.casilla:disabled { cursor: default; }
+
+.casilla.x { color: var(--x); }
+.casilla.o { color: var(--o); }
+
+.casilla.ganadora {
+  background: var(--ganadora);
+  color: var(--fondo);
+}
+
+/* Animación al colocar una ficha */
+.casilla.x,
+.casilla.o { animation: aparecer 0.2s ease-out; }
+
+@keyframes aparecer {
+  from { transform: scale(0.6); opacity: 0; }
+}
+
+/* ---------- Marcador ---------- */
+.marcador {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.marcador div {
+  background: var(--tarjeta);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.marcador span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+.marcador .ficha-x { color: var(--x); font-weight: 800; }
+.marcador .ficha-o { color: var(--o); font-weight: 800; }
+
+.marcador b { font-size: 1.4rem; }
+
+/* ---------- Acciones ---------- */
+.acciones {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.acciones button {
+  flex: 1;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  background: var(--o);
+  color: var(--fondo);
+  font-weight: 700;
+}
+
+.acciones .secundario {
+  background: none;
+  border: 1px solid var(--casilla-hover);
+  color: var(--texto-suave);
+  font-weight: 400;
+}
